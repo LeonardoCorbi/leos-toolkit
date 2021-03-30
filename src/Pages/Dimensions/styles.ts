@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+interface Props {
+  heightShow: number
+  widthShow: number
+}
+
 export const Container = styled.div`
 `;
 
@@ -41,6 +46,28 @@ fieldset {
   }
 `
 
-export const Shape = styled.div`
+export const Shape = styled.div<Props>`
   border: 1px solid white;
+
+  position: relative;
+
+  &::after {
+    content: '${props => props.heightShow}px';
+    
+    position: absolute;
+    top: 50%;
+    left: -15px;
+
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+
+  &::before {
+    content: '${props => props.widthShow}px';
+    
+    position: absolute;
+    top: -15px;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+  }
 `

@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
+
 export const GlobalStyles = createGlobalStyle`
 
   //! Thin 100
@@ -22,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 400;
 
     &::selection {
-      background-color: #00FF0044;
+      background-color: #00FFFFAA;
       color: white;
     }
   }
@@ -83,4 +84,9 @@ export const MainWrapper = styled.main`
 
   margin: 0 auto;
   padding-top: 50px;
+
+  @media(max-width: 1640px){//! CUSTOM
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 `

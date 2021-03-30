@@ -11,26 +11,46 @@ import {
 const Dimensions: React.FC = () => {
 
   const [range, setRange] = useState('100')
-  const [dimensions, setDimensions] = useState({
-    width: 50,
-    height: 50,
-  })
-  const [previewDim, setPreviewDim] = useState({
-    width: 50,
-    height: 50,
-  })
+
+  const [userDimensionWidth, setUserWidth] = useState(0)
+  const [userDimensionHeight, setUserHeight] = useState(0)
+
+  const [previewDimensionWidth, setPreviewWidth] = useState(0)
+  const [previewDimensionHeight, setPreviewHeight] = useState(0)
 
   useEffect(() => {
-    ((x = dimensions.width, y = dimensions.height) => {
+    ((x = userDimensionWidth, y = userDimensionHeight) => {
       if(x > 200 || y > 200) {
-        setPreviewDim({...previewDim, width: (x/(x/100) * 2)})
-        setPreviewDim({...previewDim, height: (y/(y/100) * 2)})
+        let userDim = [x, y]
+        let bigger = userDim.sort((a, b) => a - b)[1]
+        let dividend = bigger / 200
+        
+        setPreviewWidth(x / dividend)
+        setPreviewHeight(y / dividend)
       } else {
-        setPreviewDim({...previewDim, width: x})
-        setPreviewDim({...previewDim, height: y})
+        let userDim = [x, y]
+        let bigger = userDim.sort((a, b) => a - b)[1]
+        let multiplier = 200 / bigger
+
+        setPreviewWidth(x * multiplier)
+        setPreviewHeight(y * multiplier)
       }
+
+      console.log('userDimensionWidth', userDimensionWidth)
+      console.log('userDimensionHeight', userDimensionHeight)
+      console.log('previewDimensionWidth', previewDimensionWidth)
+      console.log('previewDimensionHeight', previewDimensionHeight)
+      console.log('---------------------------------------------')
     })()
-  }, [dimensions.height, dimensions.width])
+  }, [userDimensionHeight, userDimensionWidth])
+
+  const [scaledWidth, setScaledWidth] = useState(userDimensionWidth)
+  const [scaledHeight, setScaledHeight] = useState(userDimensionHeight)
+
+  useEffect(() => {
+    setScaledHeight(userDimensionHeight * Number(range) / 100)
+    setScaledWidth(userDimensionWidth * Number(range) / 100)
+  }, [range, userDimensionHeight, userDimensionWidth])
 
   return (
     <>
@@ -40,11 +60,11 @@ const Dimensions: React.FC = () => {
           <p>Ajuda a alterar as dimensões de maneira proporcional.</p>
         </Container>
         <Controllers>
-          Largura: <input placeholder="Apenas números" type="text" name="width" 
-          onChange={el => setDimensions({...dimensions, [el.target.name]: Number(el.target.value)})}/> px | {dimensions.width * (Number(range)/100)}<br/>
+          Largura: <input autoComplete="off" placeholder="Apenas números" type="text" name="width" 
+          onChange={el => setUserWidth(Number(el.target.value))}/> px<br/>
 
-          Altura: <input placeholder="Apenas números" type="text" name="height" 
-          onChange={el => setDimensions({...dimensions, [el.target.name]: Number(el.target.value)})}/> px | {dimensions.height * (Number(range)/100)}<br/>
+          Altura: <input autoComplete="off" placeholder="Apenas números" type="text" name="height" 
+          onChange={el => setUserHeight(Number(el.target.value))}/> px<br/>
           
           Range: {range}%<br/>
           <input 
@@ -55,7 +75,7 @@ const Dimensions: React.FC = () => {
         <Preview>
           <fieldset>
             <legend>Visualizador</legend>
-            <Shape style={{height: previewDim.height, width: previewDim.width}} />
+            <Shape heightShow={scaledHeight} widthShow={scaledWidth} style={{height: previewDimensionHeight, width: previewDimensionWidth}} />
           </fieldset>
         </Preview>
       </MainWrapper>
