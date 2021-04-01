@@ -13,6 +13,9 @@ const Menu: React.FC = () => {
             <li>
               <Link to="/toolkit/dimensions">Dimensions</Link>
             </li>
+            <li>
+              <Link to="/toolkit/rem">REM</Link>
+            </li>
           </ul>
         </Container>
       </MainWrapper>
