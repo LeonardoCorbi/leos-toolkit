@@ -18,6 +18,29 @@ export const Controllers = styled.article`
 
     color: black;
   }
+
+  button {
+    background: white;
+
+    color: black;
+
+    height: 32px;
+    
+    padding: 0 8px;
+
+    border-radius: 8px;
+    border: 2px solid;
+
+    cursor: pointer;
+
+    &:active {
+      background: gray;
+    }
+
+    &:hover {
+      background: lightgray;
+    }
+  }
 `
 
 export const Preview = styled.article`

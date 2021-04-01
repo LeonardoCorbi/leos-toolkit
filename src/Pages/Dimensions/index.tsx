@@ -61,14 +61,15 @@ const Dimensions: React.FC = () => {
         </Container>
         <Controllers>
           Largura: <input autoComplete="off" placeholder="Apenas números" type="text" name="width" 
-          onChange={el => setUserWidth(Number(el.target.value))}/> px<br/>
+          onChange={el => setUserWidth(Number(el.target.value))}/> px | { Math.floor(userDimensionWidth / 120) }<br/>
 
           Altura: <input autoComplete="off" placeholder="Apenas números" type="text" name="height" 
-          onChange={el => setUserHeight(Number(el.target.value))}/> px<br/>
+          onChange={el => setUserHeight(Number(el.target.value))}/> px | { Math.floor(userDimensionHeight / 120) }<br/>
           
-          Range: {range}%<br/>
+          Range: {range}% | <button onClick={() => setRange('100')}>Reset</button><br/>
           <input 
-            type="range" name="" id="" min="0" max="200" defaultValue="100"
+            type="range" name="" id="" 
+            min="0" max="200" defaultValue="100" value={range}
             onChange={el => setRange(el.target.value)}
           />
         </Controllers>
