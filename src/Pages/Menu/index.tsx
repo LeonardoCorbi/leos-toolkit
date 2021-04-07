@@ -16,6 +16,9 @@ const Menu: React.FC = () => {
             <li>
               <Link to="/toolkit/rem">REM</Link>
             </li>
+            <li>
+              <Link to="/toolkit/goldeneight">Golden Eight</Link>
+            </li>
           </ul>
         </Container>
       </MainWrapper>
