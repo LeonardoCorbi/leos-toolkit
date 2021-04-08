@@ -14,6 +14,25 @@ export const Container = styled.div`
   }
 `;
 
+export const NearEight = styled.article`
+  margin-top: 32px;
+
+  fieldset {
+    border: 1px solid white;
+    border-radius: 16px;
+
+    padding: 8px 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    legend {
+      margin-left: 16px;
+      padding: 0 8px;
+    }
+  }
+`
+
 export const Preview = styled.article`
   height: 200vh;
 
@@ -21,10 +40,6 @@ export const Preview = styled.article`
 
   display: flex;
   justify-content: center;
-
-  .selected {
-    
-  }
 
   div {
     margin: 8px 0;
