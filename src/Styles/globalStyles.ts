@@ -14,9 +14,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 
-    font-family: Montserrat, sans-serif;
     color: white;
-    font-weight: 700;
   }
   
   * {
@@ -31,6 +29,8 @@ export const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
   }
 
   ul {
@@ -76,6 +76,12 @@ export const GlobalStyles = createGlobalStyle`
       color: #00000088;
     }
   }
+
+  :root {
+    --bgGray1: #1c1c1c;
+    --bgGray2: #0c0c0c;
+    --secondaryColor: #24BBD8;
+  }
 `
 
 export const MainWrapper = styled.main`
@@ -83,7 +89,6 @@ export const MainWrapper = styled.main`
   height: 100%;
 
   margin: 0 auto;
-  padding-top: 50px;
 
   @media(max-width: 1640px){//! CUSTOM
     padding-left: 32px;

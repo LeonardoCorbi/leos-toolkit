@@ -17,7 +17,10 @@ const Menu: React.FC = () => {
               <Link to="/toolkit/rem">REM</Link>
             </li>
             <li>
-              <Link to="/toolkit/goldeneight">Golden Eight</Link>
+              <Link to="/toolkit/pixelperfect">Pixel Perfect</Link>
+            </li>
+            <li>
+              <Link to="/toolkit/fonttest">Font Test</Link>
             </li>
           </ul>
         </Container>
