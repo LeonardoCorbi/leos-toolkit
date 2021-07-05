@@ -11,13 +11,10 @@ const Routes: React.FC = () => {
   return (
     <BrowserRouter>
       <Route exact path="/" component={Bio}/>
-      
-      <Route exact path="/menu" component={Menu}/>
-
-      <Route exact path="/toolkit/dimensions" component={Dimensions}/>
-      <Route exact path="/toolkit/rem" component={FontREM}/>
-      <Route exact path="/toolkit/pixelperfect" component={GoldenEight}/>
-      <Route exact path="/toolkit/fonttest" component={FontTest}/>
+      <Route exact path="/dimensions" component={Dimensions}/>
+      <Route exact path="/REM" component={FontREM}/>
+      <Route exact path="/pixelPerfect" component={GoldenEight}/>
+      <Route exact path="/fontTest" component={FontTest}/>
     </BrowserRouter>
   )
 }

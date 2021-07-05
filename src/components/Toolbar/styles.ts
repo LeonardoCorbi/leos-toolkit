@@ -14,6 +14,7 @@ export const Container = styled.nav`
   align-items: center;
 
   h1 {
+    font-family: JetBrains;
     a {
       font-weight: 700;
     }
@@ -47,7 +48,7 @@ export const Container = styled.nav`
     }
 
     .active {
-      color: var(--secondaryColor);
+      color: var(--cyan);
       position: relative;
 
       &::after {
@@ -78,7 +79,7 @@ export const Container = styled.nav`
     }
 
     li {
-      font-family: Source Code Pro;
+      font-family: JetBrains;
       margin: 0 48px;
 
       display: flex;

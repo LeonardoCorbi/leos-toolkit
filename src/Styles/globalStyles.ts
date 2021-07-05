@@ -8,6 +8,11 @@ export const GlobalStyles = createGlobalStyle`
   //! Regular 400
   //! Medium 500
   //! Bold 700
+
+  @font-face {
+    font-family: JetBrains;
+    src: url('./assets/fonts/JetBrainsMono-Regular.ttf');
+  }
   
   *, h1, h2 {
     margin: 0;
@@ -17,6 +22,15 @@ export const GlobalStyles = createGlobalStyle`
     color: white;
   }
   
+  input {
+    padding: 8px;
+
+    color: var(--white);
+
+    border: 1px solid var(--cyan);
+    border-radius: 4px;
+  }
+
   * {
     font-weight: 400;
 
@@ -42,7 +56,6 @@ export const GlobalStyles = createGlobalStyle`
     border: 0;
     background: none;
     outline: 0;
-    font-family: Montserrat;
   }
 
   html, body, #root {
@@ -56,31 +69,20 @@ export const GlobalStyles = createGlobalStyle`
   body {
     overflow-x: hidden;
 
-    background-color: #1c1c1c;
-  }
-
-  input {
-    background-color: gray;
-
-    height: 32px;
-    border-radius: 8px;
-
-    padding: 0 8px;
-    font-weight: 500;
-    font-size: 16px;
-
-    
-    &::placeholder {
-      font-weight: 300;
-
-      color: #00000088;
-    }
+    background-color: var(--bgGray1);
   }
 
   :root {
+    --white: #E1E1E6;
+    --lightGray: #B1B1B6;
     --bgGray1: #1c1c1c;
     --bgGray2: #0c0c0c;
-    --secondaryColor: #24BBD8;
+
+    --pink: #FF79C6;
+    --purple: #988BC7;
+    --cyan: #75CEFA;
+    --green: #3DD780;
+    --orange: #DA9E64;
   }
 `
 
@@ -89,6 +91,8 @@ export const MainWrapper = styled.main`
   height: 100%;
 
   margin: 0 auto;
+
+  font-family: JetBrains;
 
   @media(max-width: 1640px){//! CUSTOM
     padding-left: 32px;

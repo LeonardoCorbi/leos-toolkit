@@ -13,6 +13,7 @@ import {
   TitleSettings,
   ContentSettings 
 } from './styles';
+import Toolbar from '../../components/Toolbar';
 
 const FontTest: React.FC = () => {
 
@@ -36,10 +37,11 @@ const FontTest: React.FC = () => {
 
   return (
     <>
+      <Toolbar />
       <Helmet>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link href={font} rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href={font} rel="stylesheet" />
       </Helmet> 
       <Container
         style={{
@@ -81,7 +83,8 @@ const FontTest: React.FC = () => {
         <Controls>
 
           <PageSettings>
-            <span>Fonte externa link: <input type="text" onChange={evt => {
+            <h2>Configurações da página</h2>
+            <span>Fonte externa link: <input className="fntInput" type="text" onChange={evt => {
               setFont(evt.target.value)
               setTitle({...title, family: evt.target.value.split('family=')[1].split(':')[0]})
               setArticle({...article, family: evt.target.value.split('family=')[1].split(':')[0]})
@@ -97,20 +100,21 @@ const FontTest: React.FC = () => {
           </PageSettings>
 
           <TitleSettings>
+            <h2>Configurações do título</h2>
             <span>
-              Titulo nome: 
+              Nome da fonte: 
               <input type="text" value={font === '' ? title.family : font.split('family=')[1].split(':')[0]}
                 onChange={evt => setTitle({...title, family: evt.target.value})}
               />
               
             </span>
             <span>
-              Titulo tamanho: <input type="number" value={title.size}
+              Tamanho da fonte: <input type="number" value={title.size}
                 onChange={evt => setTitle({...title, size: Number(evt.target.value)})}
               />
             </span>
             <span>
-              Titulo peso:
+              Peso da fonte:
               {
                 font === ''
                   ? (
@@ -131,25 +135,26 @@ const FontTest: React.FC = () => {
                
             </span>
             <span>
-              Titulo cor: <ChromePicker color={title.color}
+              Cor da fonte: <ChromePicker color={title.color}
                 onChange={evt => setTitle({...title, color: evt.hex})}
               />
             </span>
           </TitleSettings>
 
           <ContentSettings>
+            <h2>Configurações do parágrafo</h2>
             <span>
-              Conteúdo nome: <input type="text" value={font === '' ? article.family : font.split('family=')[1].split(':')[0]}
+              Nome da fonte: <input type="text" value={font === '' ? article.family : font.split('family=')[1].split(':')[0]}
                 onChange={evt => setArticle({...title, family: evt.target.value})}
               />
             </span>
             <span>
-              Conteúdo tamanho: <input type="number" value={article.size}
+              Tamanho da fonte: <input type="number" value={article.size}
                 onChange={evt => setArticle({...article, size: Number(evt.target.value)})}
               />
             </span>
             <span>
-              Conteúdo peso: 
+              Peso da fonte: 
               
               {
                 font === ''
@@ -172,7 +177,7 @@ const FontTest: React.FC = () => {
               }
             </span>
             <span>
-              Conteúdo cor: <ChromePicker color={article.color}
+              Cor da fonte: <ChromePicker color={article.color}
                 onChange={evt => setArticle({...article, color: evt.hex})}
               />
             </span>

@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 
+  h1 {
+    color: var(--green);
+  }
+
   button {
     padding: 4px 8px;
 
@@ -16,6 +20,15 @@ export const Container = styled.div`
 
 export const NearEight = styled.article`
   margin-top: 32px;
+
+  input {
+    border: 1px solid var(--cyan);
+
+    width: 80px;
+    color: var(--white);
+
+    padding: 8px;
+  }
 
   fieldset {
     border: 1px solid white;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   background: white;
@@ -7,9 +7,10 @@ export const Container = styled.div`
 
   color: black;
 
-
   padding: 0 96px;
   padding-top: 24px;
+
+  
 
   h1 {
     margin-bottom: 8px;
@@ -23,7 +24,7 @@ export const Container = styled.div`
   }
 
   textarea:hover {
-    resize: both;
+    resize: vertical;
     background: #babaca22;
   }
 
@@ -36,47 +37,63 @@ export const Controls = styled.div`
   margin-bottom: 32px;
 
   display: flex;
+  justify-content: space-between;
+
+`
+
+const commonCss = css`
+  display: flex;
+  flex-direction: column;
+
+  padding: 8px;
+
+  background: var(--bgGray1);
+
+  border: 1px solid var(--bgGray2);
+  border-radius: 4px;
+
+  box-shadow: 0 0 20px 0 #0009;
+
+  width: 280px;
+  height: 100%;
+
+  input[type="text"], input[type="number"] {
+    border: 1px solid var(--cyan);
+    border-radius: 4px;
+
+    padding: 8px;
+    background: var(--bgGray1);
+    color: var(--white);
+
+    width: 100%;
+
+    font-family: JetBrains;
+  }
+
+  h2 {
+    font-family: JetBrains;
+
+    margin-bottom: 16px;
+  }
+
+  span {
+    color: var(--white);
+    margin-bottom: 8px;
+
+    font-family: JetBrains;
+  }
 `
 
 export const PageSettings = styled.span`
-  display: flex;
-  flex-direction: column;
-
-  color: black;
-
-  padding: 0 8px;
-
-  span {
-    color: black;
-    margin-bottom: 8px;
+  ${commonCss}
+  
+  .fntInput {
+    height: 100px;
   }
+
 `
 
-export const TitleSettings = styled.span`
-  display: flex;
-  flex-direction: column;
+export const TitleSettings = styled.span`${commonCss}`
 
-  color: black;
-
-  padding: 0 8px;
-
-  span {
-    color: black;
-    margin-bottom: 8px;
-  }
-`
-
-export const ContentSettings = styled.span`
-  display: flex;
-  flex-direction: column;
-
-  color: black;
-
-  padding: 0 8px;
-
-  span {
-    color: black;
-    margin-bottom: 8px;
-  }
-`
+export const ContentSettings = styled.span`${commonCss}`
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { updateJsxSpreadAttribute } from 'typescript';
+import Toolbar from '../../components/Toolbar';
 import { MainWrapper } from '../../Styles/globalStyles';
 
 import { 
@@ -26,9 +27,13 @@ const FontREM: React.FC = () => {
 
   return (
     <>
+    <Toolbar />
       <MainWrapper>
         <Container>
           <h1>FontREM</h1>
+          <span>
+            Te ajuda a encontrar o valor em pixels com base na percentagem do REM do projeto. 
+          </span>
         </Container>
         <Content>
           <header>

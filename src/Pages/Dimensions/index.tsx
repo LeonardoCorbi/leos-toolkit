@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import Toolbar from '../../components/Toolbar';
 import { MainWrapper } from '../../Styles/globalStyles';
 
 import { 
@@ -37,11 +38,11 @@ const Dimensions: React.FC = () => {
         setPreviewHeight(y * multiplier)
       }
 
-      console.log('userDimensionWidth', userDimensionWidth)
-      console.log('userDimensionHeight', userDimensionHeight)
-      console.log('previewDimensionWidth', previewDimensionWidth)
-      console.log('previewDimensionHeight', previewDimensionHeight)
-      console.log('---------------------------------------------')
+      // console.log('userDimensionWidth', userDimensionWidth)
+      // console.log('userDimensionHeight', userDimensionHeight)
+      // console.log('previewDimensionWidth', previewDimensionWidth)
+      // console.log('previewDimensionHeight', previewDimensionHeight)
+      // console.log('---------------------------------------------')
     })()
   }, [userDimensionHeight, userDimensionWidth])
 
@@ -55,6 +56,7 @@ const Dimensions: React.FC = () => {
 
   return (
     <>
+      <Toolbar />
       <MainWrapper>
         <Container>
           <h1>Resize Dimensions</h1>
@@ -62,10 +64,10 @@ const Dimensions: React.FC = () => {
         </Container>
         <Controllers>
           Largura: <input autoComplete="off" placeholder="Apenas números" type="text" name="width" 
-          onChange={el => setUserWidth(Number(el.target.value))}/> px | { Math.floor(userDimensionWidth / 120) }<br/>
+          onChange={el => setUserWidth(Number(el.target.value))}/> px<br/>
 
           Altura: <input autoComplete="off" placeholder="Apenas números" type="text" name="height" 
-          onChange={el => setUserHeight(Number(el.target.value))}/> px | { Math.floor(userDimensionHeight / 120) }<br/>
+          onChange={el => setUserHeight(Number(el.target.value))}/> px<br/>
           
           Range: {range}% | <button onClick={() => setRange('100')}>Reset</button><br/>
           <input 

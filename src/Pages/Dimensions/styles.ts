@@ -14,9 +14,14 @@ export const Controllers = styled.article`
   font-weight: 500;
 
   input {
-    width: 100px;
+    width: 120px;
+    padding: 8px;
 
-    color: black;
+    color: var(--white);
+
+    border: 1px solid var(--cyan);
+    border-radius: 4px;
+
   }
 
   button {
