@@ -84,11 +84,13 @@ const FontTest: React.FC = () => {
 
           <PageSettings>
             <h2>Configurações da página</h2>
-            <span>Fonte externa link: <input className="fntInput" type="text" onChange={evt => {
+            <span>Fonte externa link: 
+              <textarea className="fntInput" onChange={evt => {
               setFont(evt.target.value)
               setTitle({...title, family: evt.target.value.split('family=')[1].split(':')[0]})
               setArticle({...article, family: evt.target.value.split('family=')[1].split(':')[0]})
-            }}/></span>
+              }}/>
+            </span>
             <span>
               Cor do fundo:
               <ChromePicker

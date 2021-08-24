@@ -89,6 +89,20 @@ export const PageSettings = styled.span`
   
   .fntInput {
     height: 100px;
+    border: 1px solid var(--cyan);
+    border-radius: 4px;
+
+    padding: 8px;
+    background: var(--bgGray1);
+    color: var(--white);
+
+    width: 100%;
+
+    font-family: JetBrains;
+
+    &:hover {
+      resize: none;
+    }
   }
 
 `

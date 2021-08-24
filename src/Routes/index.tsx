@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Bio from '../Pages/Bio'
+import Botcoin from '../Pages/Botcoin'
 import Dimensions from '../Pages/Dimensions'
 import FontREM from '../Pages/FontREM'
 import FontTest from '../Pages/FontTest'
@@ -15,6 +16,7 @@ const Routes: React.FC = () => {
       <Route exact path="/REM" component={FontREM}/>
       <Route exact path="/pixelPerfect" component={GoldenEight}/>
       <Route exact path="/fontTest" component={FontTest}/>
+      <Route exact path="/botcoin" component={Botcoin}/>
     </BrowserRouter>
   )
 }

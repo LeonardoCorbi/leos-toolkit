@@ -27,7 +27,7 @@ const Bio: React.FC = () => {
             <div className="line6">leonardoCorbi.<span className="green">push</span><span className="cyan">(</span>StyledComponents<span className="cyan">)</span></div>
           </Animation>
           <figure>
-            <img src="https://github.com/LeonardoCorbi.png" alt="Imagem de Leonardo Corbi" />
+            <img src="../assets/images/LeonardoCorbi.jpg" alt="Imagem de Leonardo Corbi" />
             <figcaption>Desenvolvedor Front-End</figcaption>
           </figure>
         </FirstContainer>
@@ -64,23 +64,23 @@ const Bio: React.FC = () => {
           <span>
             <ul>
               <li>
-                <Link to="dimensions">Dimensions</Link>
+                <a href="/dimensions">Dimensions</a>
               </li>
               <li>
-                <Link to="REM">REM</Link>
+                <a href="/REM">REM</a>
               </li>
               <li>
-                <Link to="pixelPerfect">Pixel Perfect</Link>
+                <a href="/pixelPerfect">Pixel Perfect</a>
               </li>
               <li>
-                <Link to="fontTest">Font Test</Link>
+                <a href="/fontTest">Font Test</a>
               </li>
             </ul>
           </span>
         </ThirdContainer>
-        <ForthContainer>
+        {/* <ForthContainer>
           
-        </ForthContainer>
+        </ForthContainer> */}
       </>
   );
 };
