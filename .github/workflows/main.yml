@@ -1,24 +1,17 @@
 on: push
 name: 🚀 Deploy website on push
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  build:
     runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
 
-    - name: 😽 Install
-      uses: borales/actions-yarn@v2.3.0
-      with:
-        cmd: install
-        env: |
-          CI: true
-        
-    - name: 😽 Build
-      uses: borales/actions-yarn@v2.3.0
-      with:
-        cmd: build
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps: 
+      uses: actions/checkout@v2
+      - run: npm install
+      - npm: npm run
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
