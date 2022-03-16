@@ -64,16 +64,16 @@ const Bio: React.FC = () => {
           <span>
             <ul>
               <li>
-                <a href="/dimensions">Dimensions</a>
+                <Link to="/dimensions">Dimensions</Link>
               </li>
               <li>
-                <a href="/REM">REM</a>
+                <Link to="/REM">REM</Link>
               </li>
               <li>
-                <a href="/pixelPerfect">Pixel Perfect</a>
+                <Link to="/pixelPerfect">Pixel Perfect</Link>
               </li>
               <li>
-                <a href="/fontTest">Font Test</a>
+                <Link to="/fontTest">Font Test</Link>
               </li>
             </ul>
           </span>

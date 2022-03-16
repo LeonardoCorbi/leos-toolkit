@@ -2,12 +2,10 @@ import React from 'react';
 import Routes from './Routes';
 import { GlobalStyles } from './Styles/globalStyles';
 
-function App() {
+const App = () => {
   return (
     <>
-      <Routes>
-        
-      </Routes>
+      <Routes />
       <GlobalStyles />
     </>
   );
