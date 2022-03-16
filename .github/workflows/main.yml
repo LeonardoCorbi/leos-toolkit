@@ -9,14 +9,14 @@ jobs:
         node-version: [14.x]
 
     steps: 
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - run: npm install
-      - npm: npm run
+      - run: npm run
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: ${{ secrets.FTP_PATH }}
+      - name: 📂 Sync files
+      - uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_PATH }}
