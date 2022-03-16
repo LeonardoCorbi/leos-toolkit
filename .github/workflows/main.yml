@@ -8,11 +8,13 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
 
-    - uses: borales/actions-yarn@v2.3.0
+    - uses: 😽 yarn install
       with:
         cmd: install
+        env:
+          CI: true
         
-    - uses: borales/actions-yarn@v2.3.0
+    - uses: 😽 yarn build
       with:
         cmd: build
 
