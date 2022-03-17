@@ -8,9 +8,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
 
-    - name: |
-      matrix ${{ matrix.FTP_HOST }}
-      secret ${{ secret.FTP_HOST }}
+    - name: matrix ${{ matrix.FTP_HOST }} secret ${{ secret.FTP_HOST }}
       uses: actions/setup-node@v2
       with:
         node-version: '14'
