@@ -8,8 +8,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
 
-    - name: matrix ${{ secrets.FTP_HOST }}
-      uses: actions/setup-node@v2
+    - uses: actions/setup-node@v2
       with:
         node-version: '14'
       
@@ -23,8 +22,8 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ${{ matrix.FTP_HOST }}
-        username: ${{ matrix.FTP_USERNAME }}
-        password: ${{ matrix.FTP_PASSWORD }}
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
         local-dir: build/
-        server-dir: ${{ matrix.FTP_PATH }}
+        server-dir: ${{ secrets.FTP_PATH }}
