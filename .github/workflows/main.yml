@@ -15,17 +15,16 @@ jobs:
       
     - name: 🔨 Build Project
       run: |
-        npm i -g yarn
-        yarn install
-        yarn build
+        npm i
+        yarn run build
       env:
         CI: false
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        server: ${{ matrix.FTP_HOST }}
+        username: ${{ matrix.FTP_USERNAME }}
+        password: ${{ matrix.FTP_PASSWORD }}
         local-dir: build/
-        server-dir: ${{ secrets.FTP_PATH }}
+        server-dir: ${{ matrix.FTP_PATH }}
