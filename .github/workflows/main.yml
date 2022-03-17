@@ -3,10 +3,10 @@ on:
     tags:
       - v*
 
-name: 🚀 Deploy website on push
+name: 🚀 Production deploy
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: 🎉 Deploying
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
