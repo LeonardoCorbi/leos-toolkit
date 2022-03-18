@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-
   h1 {
     color: var(--green);
   }
@@ -19,7 +18,9 @@ export const Container = styled.div`
 `;
 
 export const NearEight = styled.article`
-  margin-top: 32px;
+  position: fixed;
+  margin-top: 220px;
+  top: 32px;
 
   input {
     border: 1px solid var(--cyan);
@@ -37,14 +38,24 @@ export const NearEight = styled.article`
     padding: 8px 16px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
 
     legend {
       margin-left: 16px;
       padding: 0 8px;
     }
+
+    input {
+      width: 50px;
+    }
+
+    p {
+      cursor: pointer;
+    }
   }
-`
+`;
 
 export const Preview = styled.article`
   height: 200vh;
@@ -63,11 +74,11 @@ export const Preview = styled.article`
 
     cursor: pointer;
   }
-`
+`;
 
 export const Bottom = styled.div`
   width: 100%;
   height: 5px;
 
   background: red;
-`
+`;

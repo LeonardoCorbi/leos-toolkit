@@ -1,5 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
-
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -84,11 +83,11 @@ export const GlobalStyles = createGlobalStyle`
     --green: #3DD780;
     --orange: #DA9E64;
   }
-`
+`;
 
 export const MainWrapper = styled.main`
   max-width: 1640px;
-  height: 100%;
+  height: fit-content;
 
   margin: 0 auto;
 
@@ -98,4 +97,4 @@ export const MainWrapper = styled.main`
     padding-left: 32px;
     padding-right: 32px;
   }
-`
+`;

@@ -158,25 +158,31 @@ export const Animation = styled.section`
   }
 
   .line2 {
-    animation: Typing 1500ms 1800ms steps(30) forwards, Blinking 600ms 1800ms 2 linear;
+    animation:
+      Typing 1500ms 1800ms steps(30) forwards, Blinking 600ms 1800ms 2 linear;
   }
 
   .line3 {
-    animation: Typing 1500ms 3300ms steps(30) forwards, Blinking 600ms 3300ms 2 linear;
+    animation:
+      Typing 1500ms 3300ms steps(30) forwards, Blinking 600ms 3300ms 2 linear;
   }
 
   .line4 {
-    animation: Typing 1500ms 4800ms steps(30) forwards, Blinking 600ms 4800ms 2 linear;
+    animation:
+      Typing 1500ms 4800ms steps(30) forwards, Blinking 600ms 4800ms 2 linear;
   }
 
   .line5 {
-    animation: Typing 1500ms 6300ms steps(30) forwards, Blinking 600ms 6300ms 2 linear;
+    animation:
+      Typing 1500ms 6300ms steps(30) forwards, Blinking 600ms 6300ms 2 linear;
   }
 
   .line6 {
-    animation: Typing 1500ms 7800ms steps(30) forwards, Blinking 750ms 7800ms linear infinite;
+    animation:
+      Typing 1500ms 7800ms steps(30) forwards,
+      Blinking 750ms 7800ms linear infinite;
   }
-`
+`;
 
 export const SecondContainer = styled.article`
   padding: 0 256px;
@@ -265,7 +271,7 @@ export const SecondContainer = styled.article`
       }
     }
   }
-`
+`;
 
 export const Biography = styled.section`
   font-family: JetBrains;
@@ -313,7 +319,7 @@ export const Biography = styled.section`
       }
     }
   }
-`
+`;
 
 export const ThirdContainer = styled.article`
   padding: 80px 96px;
@@ -417,7 +423,7 @@ export const ThirdContainer = styled.article`
       box-shadow: 0 0 0 0 black;
     }
   }
-`
+`;
 
 export const ForthContainer = styled.article`
   padding: 0 96px;
@@ -425,4 +431,4 @@ export const ForthContainer = styled.article`
   height: 100vh;
 
   background: var(--bgGray2);
-`
+`;
