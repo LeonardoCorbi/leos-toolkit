@@ -26,6 +26,7 @@ export const ShadesWrapper = styled.div`
 `;
 
 export const ColorBox = styled.div<IBoxColor>`
+  position: relative;
   background-color: ${({ color }) => color};
 
   display: flex;
@@ -39,6 +40,11 @@ export const ColorBox = styled.div<IBoxColor>`
   border-radius: 8px;
 
   cursor: pointer;
+
+  span {
+    position: absolute;
+    top: -32px;
+  }
 
   p {
     margin-bottom: -32px;

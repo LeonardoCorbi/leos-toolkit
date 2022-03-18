@@ -1,12 +1,12 @@
-import styled from 'styled-components'
-import {AiFillGithub, AiOutlinePhone} from 'react-icons/ai'
-import {HiOutlineMail} from 'react-icons/hi'
-import { BiHomeAlt } from 'react-icons/bi'
+import styled from 'styled-components';
+import { AiFillGithub, AiOutlinePhone } from 'react-icons/ai';
+import { HiOutlineMail } from 'react-icons/hi';
+import { BiHomeAlt } from 'react-icons/bi';
 
-export const MailIcon = styled(HiOutlineMail)``
-export const GithubIcon = styled(AiFillGithub)``
-export const HomeIcon = styled(BiHomeAlt)``
-export const PhoneIcon = styled(AiOutlinePhone)``
+export const MailIcon = styled(HiOutlineMail)``;
+export const GithubIcon = styled(AiFillGithub)``;
+export const HomeIcon = styled(BiHomeAlt)``;
+export const PhoneIcon = styled(AiOutlinePhone)``;
 
 export const Container = styled.nav`
   padding: 0 96px;
@@ -185,4 +185,4 @@ export const Notch = styled.nav`
   @media(min-width: 1024px){//! CUSTOM
     display: none;
   }
-`
+`;

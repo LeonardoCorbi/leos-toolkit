@@ -1,80 +1,69 @@
-import axios from 'axios'
-import querystring from 'querystring'
-import crypto from 'crypto'
+import axios from 'axios';
+import querystring from 'querystring';
+import crypto from 'crypto';
 
-const API_KEY= 'lqs0zegr0z5NCAMNGxgKYWgqSWsdfxkFSUw2bq8OLfGEOWVLDGKdnJgcR0ye5w6D'
-const SECRET_KEY= 'dsTrEFOd7eB8VzidpF7cMCNgqbq9jNvVFqfA7H5b9MiRQAAfbhdGyaxFvzjsgYgX'
-const API_URL= 'https://api.binance.com/api/v3'
+const API_KEY = 'lqs0zegr0z5NCAMNGxgKYWgqSWsdfxkFSUw2bq8OLfGEOWVLDGKdnJgcR0ye5w6D';
+const SECRET_KEY = 'dsTrEFOd7eB8VzidpF7cMCNgqbq9jNvVFqfA7H5b9MiRQAAfbhdGyaxFvzjsgYgX';
+const API_URL = 'https://api.binance.com/api/v3';
 
 const publicCall = async (path: string, payload?: any, method = 'GET') => {
-  let qs = payload ? `?${querystring.stringify(payload)}` : '' 
-  
-  try {
-    let { data } = await axios({
-      method: method as any,
-      url: `${API_URL}${path}${qs}`
-    })
+  const qs = payload ? `?${querystring.stringify(payload)}` : '';
 
-    return data
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-const privateCall = async (path: string, payload = {}, method = 'GET' ) => {
-  let timestamp = Date.now()
-  let signature = crypto.createHmac('SHA256', SECRET_KEY)
-    .update(`${querystring.stringify({...payload, timestamp})}`)
-    .digest('hex')
-  
-  let newData = {...payload, timestamp, signature}
-  let qs = `?${querystring.stringify(newData)}`
-  
   try {
-    let { data } = await axios({
+    const { data } = await axios({
       method: method as any,
       url: `${API_URL}${path}${qs}`,
-      headers: { 'X-MBX-APIKEY': API_KEY }
-    })
+    });
 
-    return data
+    return data;
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
-}
+  return undefined;
+};
 
-export const time = async () => {
-  return publicCall('/time')
-}
+const privateCall = async (path: string, payload = {}, method = 'GET') => {
+  const timestamp = Date.now();
+  const signature = crypto.createHmac('SHA256', SECRET_KEY)
+    .update(`${querystring.stringify({ ...payload, timestamp })}`)
+    .digest('hex');
 
-export const depth = async (symbol: string, limit: number = 5) => {
-  return publicCall('/depth', { symbol, limit })
-}
+  const newData = { ...payload, timestamp, signature };
+  const qs = `?${querystring.stringify(newData)}`;
 
-export const trades = async (symbol: string, limit: number = 5) => {
-  return publicCall('/trades', { symbol, limit })
-}
+  try {
+    const { data } = await axios({
+      method: method as any,
+      url: `${API_URL}${path}${qs}`,
+      headers: { 'X-MBX-APIKEY': API_KEY },
+    });
 
-export const average = async (symbol: string) => {
-  return publicCall('/avgPrice', { symbol })
-}
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+  return undefined;
+};
 
-export const exchangeInfo = async () => {
-  return publicCall('/exchangeInfo')
-}
+export const time = async () => publicCall('/time');
 
+export const depth = async (symbol: string, limit: number = 5) => publicCall('/depth', { symbol, limit });
 
+export const trades = async (symbol: string, limit: number = 5) => publicCall('/trades', { symbol, limit });
 
-export const accountInfo = async () => {
-  return privateCall('/account')
-}
+export const average = async (symbol: string) => publicCall('/avgPrice', { symbol });
 
+export const exchangeInfo = async () => publicCall('/exchangeInfo');
 
-export const newOrder = async (symbol: string, quantity: number, price: number, side: string = "BUY", type = 'MARKET') => {
-  let data = { symbol, side, type, quantity, price, timeInForce: 'GTC'}
-  
-  if(!price) delete data.price
-  if(type !== 'LIMIT') delete data.timeInForce
+export const accountInfo = async () => privateCall('/account');
 
-  return privateCall('/order', data, 'POST')
-}
+export const newOrder = async (symbol: string, quantity: number, price: number, side: string = 'BUY', type = 'MARKET') => {
+  const data = {
+    symbol, side, type, quantity, price, timeInForce: 'GTC',
+  };
+
+  if (!price) delete data.price;
+  if (type !== 'LIMIT') delete data.timeInForce;
+
+  return privateCall('/order', data, 'POST');
+};

@@ -46,7 +46,7 @@ export const Controllers = styled.article`
       background: lightgray;
     }
   }
-`
+`;
 
 export const Preview = styled.article`
 
@@ -72,7 +72,7 @@ fieldset {
       font-weight: 700;
     }
   }
-`
+`;
 
 export const Shape = styled.div<Props>`
   border: 1px solid white;
@@ -80,7 +80,7 @@ export const Shape = styled.div<Props>`
   position: relative;
 
   &::after {
-    content: '${props => props.heightShow}px';
+    content: '${(props) => props.heightShow}px';
     
     position: absolute;
     top: 50%;
@@ -90,7 +90,7 @@ export const Shape = styled.div<Props>`
   }
 
   &::before {
-    content: '${props => props.widthShow}px';
+    content: '${(props) => props.widthShow}px';
     
     position: absolute;
     top: -15px;
@@ -98,4 +98,4 @@ export const Shape = styled.div<Props>`
 
     transform: translate(-50%, -50%);
   }
-`
+`;

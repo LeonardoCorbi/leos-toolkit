@@ -1,23 +1,17 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { ColorBox, ColorPickerWrapper, Container, ShadesWrapper } from './styles';
+import React, {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import { SketchPicker } from 'react-color';
 import { colord } from 'colord';
-
-interface IShadesBoxes {
-  '100': string;
-  '200': string;
-  '300': string;
-  '400': string;
-  '500': string;
-  '600': string;
-  '700': string;
-  '800': string;
-  '900': string;
-}
+import hsl from 'hsl-to-hex';
+import {
+  ColorBox, ColorPickerWrapper, Container, ShadesWrapper,
+} from './styles';
 
 const Shades = () => {
   const [selectedColor, setSelectedColor] = useState('');
-  const [shade, setShade] = useState<string[]>(['', '', '', '', '', '', '', '', '']);
+  const firstColor = useMemo(() => `#${String(Math.round(Math.random() * 999999))}`, []);
+  const [shade, setShade] = useState<string[]>(['', '', '', '', firstColor, '', '', '', '']);
 
   const handleSelectColor = useCallback(({ hex }) => {
     setSelectedColor(hex);
@@ -27,35 +21,34 @@ const Shades = () => {
     const darkenReason = l / 499;
 
     setShade(() => ([
-        colord({ h, s, l: l + (400 * lightenReason) }).toHex(),
-        colord({ h, s, l: l + (300 * lightenReason) }).toHex(),
-        colord({ h, s, l: l + (200 * lightenReason) }).toHex(),
-        colord({ h, s, l: l + (100 * lightenReason) }).toHex(),
-        hex,
-        colord({ h, s, l: l - (100 * darkenReason) }).toHex(),
-        colord({ h, s, l: l - (200 * darkenReason) }).toHex(),
-        colord({ h, s, l: l - (300 * darkenReason) }).toHex(),
-        colord({ h, s, l: l - (400 * darkenReason) }).toHex(),
+      hsl(h, s, l + (400 * lightenReason)),
+      hsl(h, s, l + (300 * lightenReason)),
+      hsl(h, s, l + (200 * lightenReason)),
+      hsl(h, s, l + (100 * lightenReason)),
+      hex,
+      hsl(h, s, l - (100 * darkenReason)),
+      hsl(h, s, l - (200 * darkenReason)),
+      hsl(h, s, l - (300 * darkenReason)),
+      hsl(h, s, l - (400 * darkenReason)),
     ]));
-  }, [setSelectedColor]);
+  }, [setSelectedColor, firstColor]);
 
   const handleCopy = (hex: string) => {
     navigator.clipboard.writeText(hex);
-  }
-
-  useEffect(() => handleSelectColor(String(Math.round(Math.random() * 999999))), []);
+  };
 
   return (
     <Container>
       <ShadesWrapper>
         {
           shade.map((item, index) => (
-            <ColorBox 
-              key={index}
+            <ColorBox
+              key={Math.random() * 100}
               color={item}
               index={index}
               onClick={() => handleCopy(item)}
             >
+              <span>{`${index + 1}00`}</span>
               <p onClick={() => handleCopy(item)}>{item}</p>
             </ColorBox>
           ))
@@ -65,7 +58,7 @@ const Shades = () => {
         <SketchPicker
           color={selectedColor}
           onChange={handleSelectColor}
-          width="400px"
+          width="390px"
           className="colorPicker"
         />
       </ColorPickerWrapper>

@@ -39,7 +39,7 @@ export const Controls = styled.div`
   display: flex;
   justify-content: space-between;
 
-`
+`;
 
 const commonCss = css`
   display: flex;
@@ -82,7 +82,7 @@ const commonCss = css`
 
     font-family: JetBrains;
   }
-`
+`;
 
 export const PageSettings = styled.span`
   ${commonCss}
@@ -105,9 +105,8 @@ export const PageSettings = styled.span`
     }
   }
 
-`
+`;
 
-export const TitleSettings = styled.span`${commonCss}`
+export const TitleSettings = styled.span`${commonCss}`;
 
-export const ContentSettings = styled.span`${commonCss}`
-
+export const ContentSettings = styled.span`${commonCss}`;
