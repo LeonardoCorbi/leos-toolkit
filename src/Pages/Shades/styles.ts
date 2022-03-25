@@ -5,6 +5,10 @@ interface IBoxColor {
   index: number;
 }
 
+interface IShadesWrapper {
+  background: string;
+}
+
 export const Container = styled.div`
   font-family: sans-serif;
 
@@ -17,12 +21,18 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-export const ShadesWrapper = styled.div`
+export const ShadesWrapper = styled.div<IShadesWrapper>`
   display: flex;
   flex-direction: row-reverse;
   gap: 32px;
 
   margin-bottom: 48px;
+
+  background-color: ${({ background }) => background};
+
+  height: 500px;
+  padding: 40px;
+  border-radius: 8px;
 `;
 
 export const ColorBox = styled.div<IBoxColor>`
@@ -44,10 +54,12 @@ export const ColorBox = styled.div<IBoxColor>`
   span {
     position: absolute;
     top: -32px;
+    color: ${({ color }) => color};
   }
 
-  p {
+  p, ul {
     margin-bottom: -32px;
+    color: ${({ color }) => color};
   }
 `;
 

@@ -1,37 +1,59 @@
-/* eslint-disable space-infix-ops */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable keyword-spacing */
-/* eslint-disable space-before-blocks */
-/* eslint-disable object-shorthand */
-/* eslint-disable operator-assignment */
-/* eslint-disable no-shadow */
-/* eslint-disable no-var */
-/* eslint-disable vars-on-top */
-/* eslint-disable indent */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-sequences */
-/* eslint-disable eqeqeq */
-/* eslint-disable default-case */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable prefer-template */
-/* eslint-disable one-var-declaration-per-line */
-/* eslint-disable no-multi-assign */
-/* eslint-disable one-var */
-/* eslint-disable no-param-reassign */
 import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
-import { PhotoshopPicker, GithubPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 import { colord } from 'colord';
 import hsl from 'hsl-to-hex';
+import ColorContrastChecker from 'color-contrast-checker';
 import {
   ColorBox, ColorPickerWrapper, Container, ShadesWrapper,
 } from './styles';
 
+interface IWCAG {
+  WCAG_AA : boolean;
+  WCAG_AAA: boolean;
+}
+
 const Shades = () => {
+  const wcag = new ColorContrastChecker();
   const [selectedColor, setSelectedColor] = useState('');
   const firstColor = useMemo(() => `#${String(Math.round(Math.random() * 999999))}`, []);
-  const [shade, setShade] = useState<string[]>(['', '', '', '', firstColor, '', '', '', '']);
+  const [shade, setShade] = useState<[string, IWCAG[]][]>([['', []], ['', []], ['', []], ['', []], [firstColor, []], ['', []], ['', []], ['', []], ['', []]]);
+  const [range, setRange] = useState(100);
+  const percentage = useMemo(() => hsl(0, 0, range), [range]);
+
+  const ratioChecker = useCallback((foreground: string) => wcag.checkPairs([
+    {
+      colorA: foreground,
+      colorB: percentage,
+      fontSize: 12,
+    },
+    {
+      colorA: foreground,
+      colorB: percentage,
+      fontSize: 14,
+    },
+    {
+      colorA: foreground,
+      colorB: percentage,
+      fontSize: 16,
+    },
+    {
+      colorA: foreground,
+      colorB: percentage,
+      fontSize: 24,
+    },
+    {
+      colorA: foreground,
+      colorB: percentage,
+      fontSize: 32,
+    },
+    {
+      colorA: foreground,
+      colorB: percentage,
+      fontSize: 40,
+    },
+  ]) as IWCAG[], []);
 
   const handleSelectColor = useCallback(({ hex }) => {
     setSelectedColor(hex);
@@ -41,15 +63,15 @@ const Shades = () => {
     const darkenReason = +(l / 499).toFixed(4);
 
     setShade(() => ([
-      hsl(h, s, l + (400 * lightenReason)),
-      hsl(h, s, l + (300 * lightenReason)),
-      hsl(h, s, l + (200 * lightenReason)),
-      hsl(h, s, l + (100 * lightenReason)),
-      hex,
-      hsl(h, s, l - (100 * darkenReason)),
-      hsl(h, s, l - (200 * darkenReason)),
-      hsl(h, s, l - (300 * darkenReason)),
-      hsl(h, s, l - (400 * darkenReason)),
+      [hsl(h, s, l + (400 * lightenReason)), ratioChecker(hsl(h, s, l + (400 * lightenReason)))],
+      [hsl(h, s, l + (300 * lightenReason)), ratioChecker(hsl(h, s, l + (300 * lightenReason)))],
+      [hsl(h, s, l + (200 * lightenReason)), ratioChecker(hsl(h, s, l + (200 * lightenReason)))],
+      [hsl(h, s, l + (100 * lightenReason)), ratioChecker(hsl(h, s, l + (100 * lightenReason)))],
+      [hex, ratioChecker(hex)],
+      [hsl(h, s, l - (100 * darkenReason)), ratioChecker(hsl(h, s, l - (100 * darkenReason)))],
+      [hsl(h, s, l - (200 * darkenReason)), ratioChecker(hsl(h, s, l - (200 * darkenReason)))],
+      [hsl(h, s, l - (300 * darkenReason)), ratioChecker(hsl(h, s, l - (300 * darkenReason)))],
+      [hsl(h, s, l - (400 * darkenReason)), ratioChecker(hsl(h, s, l - (400 * darkenReason)))],
     ]));
   }, [setSelectedColor, firstColor]);
 
@@ -59,26 +81,49 @@ const Shades = () => {
 
   return (
     <Container>
-      <ShadesWrapper>
+      <ShadesWrapper background={percentage}>
         {
-          shade.map((item, index) => (
-            <ColorBox
-              key={Math.random() * 100}
-              color={item}
-              index={index}
-              onClick={() => handleCopy(item)}
-            >
-              <span>{`${index + 1}00`}</span>
-              <p onClick={() => handleCopy(item)}>{item}</p>
-            </ColorBox>
+          shade.map(([item, checker], index) => (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <ColorBox
+                key={Math.random() * 100}
+                color={item}
+                index={index}
+                onClick={() => handleCopy(item)}
+              >
+                <span>{`${index + 1}00`}</span>
+                <p onClick={() => handleCopy(item)}>
+                  {item}
+                </p>
+              </ColorBox>
+              <ul style={{ marginTop: 54 }}>
+                {checker.map((_, pos) => {
+                  const { WCAG_AA, WCAG_AAA } = checker[pos];
+                  return (
+                    <li style={{ color: 'black' }}>
+                      AAA:
+                      {WCAG_AAA ? 'Pass' : 'Fail'}
+                      {' | '}
+                      AA:
+                      {' '}
+                      {WCAG_AA ? 'Pass' : 'Fail'}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           ))
         }
       </ShadesWrapper>
+      <article>
+        <input type="range" onChange={({ target: { value } }) => setRange(+value)} min={0} max={100} value={range} />
+        {percentage}
+      </article>
       <ColorPickerWrapper>
-        <PhotoshopPicker
+        <SketchPicker
           color={selectedColor}
           onChange={handleSelectColor}
-          // width="390px"
+          width="390px"
           className="colorPicker"
         />
       </ColorPickerWrapper>
