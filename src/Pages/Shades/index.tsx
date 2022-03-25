@@ -1,7 +1,7 @@
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useMemo, useState,
 } from 'react';
-import { SketchPicker } from 'react-color';
+import { PhotoshopPicker } from 'react-color';
 import { colord } from 'colord';
 import hsl from 'hsl-to-hex';
 import {
@@ -55,10 +55,10 @@ const Shades = () => {
         }
       </ShadesWrapper>
       <ColorPickerWrapper>
-        <SketchPicker
+        <PhotoshopPicker
           color={selectedColor}
           onChange={handleSelectColor}
-          width="390px"
+          // width="390px"
           className="colorPicker"
         />
       </ColorPickerWrapper>
