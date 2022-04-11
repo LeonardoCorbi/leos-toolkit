@@ -16,7 +16,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 48px;
+  gap: 16px;
 
   height: 100vh;
 `;
@@ -24,14 +24,12 @@ export const Container = styled.div`
 export const ShadesWrapper = styled.div<IShadesWrapper>`
   display: flex;
   flex-direction: row-reverse;
-  gap: 32px;
-
-  margin-bottom: 48px;
 
   background-color: ${({ background }) => background};
 
-  height: 500px;
+  height: fit-content;
   padding: 40px;
+  padding-bottom: 14px;
   border-radius: 8px;
 `;
 
@@ -46,8 +44,7 @@ export const ColorBox = styled.div<IBoxColor>`
   width: 100px;
   height: 100px;
 
-  border: ${({ index }) => index === 4 && '3px solid white'};
-  border-radius: 8px;
+  border-radius: ${({ index }) => index === 4 && '8px'};
 
   cursor: pointer;
 
@@ -66,6 +63,21 @@ export const ColorBox = styled.div<IBoxColor>`
 export const ColorPickerWrapper = styled.div`
   color: black;
 
+  article {
+    position: relative;
+
+    border-radius: 4px;
+    padding: 8px;
+
+    background-color: white;
+
+    color: black;
+
+    p {
+      color: black;
+    }
+  }
+
   label {
     font-size: 14px !important;
   }
@@ -76,5 +88,9 @@ export const ColorPickerWrapper = styled.div`
     border-radius: 0;
     width: 100% !important;
     height: 30px;
+  }
+
+  .colorPicker {
+    margin-top: -8px;
   }
 `;
