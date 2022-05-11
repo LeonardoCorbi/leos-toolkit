@@ -13,6 +13,7 @@ export const getWCAG = (AAA: boolean, AA: boolean) => {
 
 const wcc = (foreground: string, background: string): IWCAG[] => {
   const wcag = new ColorContrastChecker();
+  if (foreground.length + background.length !== 14) return undefined;
 
   return wcag.checkPairs([
     {

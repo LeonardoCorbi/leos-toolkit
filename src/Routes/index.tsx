@@ -6,7 +6,7 @@ import FontREM from '../Pages/FontREM';
 import FontTest from '../Pages/FontTest';
 import GoldenEight from '../Pages/GoldenEight';
 import FigmaCursor from '../Pages/FigmaCursor';
-import Shades from '../Pages/Shades';
+import Pallets from '../Pages/Shades';
 
 const Routes: React.FC = () => (
   <BrowserRouter>
@@ -17,7 +17,7 @@ const Routes: React.FC = () => (
       <Route path="/pixelPerfect" element={<GoldenEight />} />
       <Route path="/fontTest" element={<FontTest />} />
       <Route path="/sandbox" element={<FigmaCursor />} />
-      <Route path="/shades" element={<Shades />} />
+      <Route path="/pallets" element={<Pallets />} />
     </Router>
   </BrowserRouter>
 );
