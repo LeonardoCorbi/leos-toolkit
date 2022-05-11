@@ -1,3 +1,6 @@
+import {
+  FaCheckCircle, FaSave, FaShareAlt, FaTrash,
+} from 'react-icons/fa';
 import styled from 'styled-components';
 
 interface IBoxColor {
@@ -16,12 +19,11 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
 
-  height: 100vh;
+  padding: 24px;
 `;
 
-export const ShadesWrapper = styled.div<IShadesWrapper>`
+export const PalletWrapper = styled.div<IShadesWrapper>`
   display: flex;
   flex-direction: row-reverse;
 
@@ -61,6 +63,8 @@ export const ColorBox = styled.div<IBoxColor>`
 `;
 
 export const ColorPickerWrapper = styled.div`
+
+margin-top: 16px;
   color: black;
 
   article {
@@ -93,4 +97,106 @@ export const ColorPickerWrapper = styled.div`
   .colorPicker {
     margin-top: -8px;
   }
+`;
+
+export const ButtonsWrapper = styled.div`
+  margin: 16px 0;
+  display: flex;
+  gap: 16px;
+`;
+
+export const SavedPallets = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 256px;
+  width: fit-content;
+
+  background-color: white;
+
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 8px;
+
+  h2 {
+    color: black;
+  }
+`;
+
+export const Tools = styled.div`
+  width: max-content;
+  color: black;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  div {
+    color: black;
+  }
+  
+  svg {
+    width: 24px;
+    height: 24px;
+    transition: opacity 300ms ease-in-out;
+
+    cursor: pointer;
+  }
+
+  input {
+    font-size: 24px;
+    color: black;
+    width: fit-content;
+    background-color: red;
+    padding: 0;
+  }
+
+  .in {
+    opacity: 1;
+  }
+
+  .out {
+    opacity: 0;
+  }
+`;
+
+export const PalletName = styled.div`
+  font-size: 24px;
+
+  margin: 0 8px;
+  padding: 4px;
+
+  border-radius: 8px;
+
+  background: transparent;
+  transition: background 300ms ease-in-out;
+
+  &:hover, &:focus {
+    background: #ececec;
+    width: fit-content;
+  }
+`;
+
+export const BoxWrapper = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 48px;
+`;
+
+export const Share = styled(FaShareAlt)`
+  fill: black;
+`;
+
+export const Trash = styled(FaTrash)`
+  fill: black;
+`;
+
+export const Save = styled(FaSave)`
+  fill: black;
+`;
+
+export const Confirm = styled(FaCheckCircle)`
+  fill: black;
 `;
