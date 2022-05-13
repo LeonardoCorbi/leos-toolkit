@@ -68,7 +68,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     overflow-x: hidden;
 
-    background-color: var(--bgGray1);
+    background-color: #1A1625;
   }
 
   :root {

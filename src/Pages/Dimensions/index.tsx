@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Toolbar from '../../components/Toolbar';
 import { MainWrapper } from '../../Styles/globalStyles';
 
 import {
@@ -47,73 +46,70 @@ const Dimensions: React.FC = () => {
   }, [range, userDimensionHeight, userDimensionWidth]);
 
   return (
-    <>
-      <Toolbar />
-      <MainWrapper>
-        <Container>
-          <h1>Resize Dimensions</h1>
-          <p>Ajuda a alterar as dimensões de maneira proporcional.</p>
-        </Container>
-        <Controllers>
-          Largura:
-          {' '}
-          <input
-            autoComplete="off"
-            placeholder="Apenas números"
-            type="text"
-            name="width"
-            onChange={(el) => setUserWidth(Number(el.target.value))}
-          />
-          {' '}
-          px
-          <br />
+    <MainWrapper>
+      <Container>
+        <h1>Resize Dimensions</h1>
+        <p>Ajuda a alterar as dimensões de maneira proporcional.</p>
+      </Container>
+      <Controllers>
+        Largura:
+        {' '}
+        <input
+          autoComplete="off"
+          placeholder="Apenas números"
+          type="text"
+          name="width"
+          onChange={(el) => setUserWidth(Number(el.target.value))}
+        />
+        {' '}
+        px
+        <br />
 
-          Altura:
-          {' '}
-          <input
-            autoComplete="off"
-            placeholder="Apenas números"
-            type="text"
-            name="height"
-            onChange={(el) => setUserHeight(Number(el.target.value))}
-          />
-          {' '}
-          px
-          <br />
+        Altura:
+        {' '}
+        <input
+          autoComplete="off"
+          placeholder="Apenas números"
+          type="text"
+          name="height"
+          onChange={(el) => setUserHeight(Number(el.target.value))}
+        />
+        {' '}
+        px
+        <br />
 
-          Range:
-          {' '}
-          {range}
-          % |
-          {' '}
-          <button type="button" onClick={() => setRange('100')}>Reset</button>
-          <br />
-          <input
-            type="range"
-            name=""
-            id=""
-            min="0"
-            max="200"
-            defaultValue="100"
-            value={range}
-            onChange={(el) => setRange(el.target.value)}
+        Range:
+        {' '}
+        {range}
+        % |
+        {' '}
+        <button type="button" onClick={() => setRange('100')}>Reset</button>
+        <br />
+        <input
+          type="range"
+          name=""
+          id=""
+          min="0"
+          max="200"
+          defaultValue="100"
+          value={range}
+          onChange={(el) => setRange(el.target.value)}
+        />
+      </Controllers>
+      <Preview>
+        <fieldset>
+          <legend>Visualizador</legend>
+          <Shape
+            heightShow={scaledHeight}
+            widthShow={scaledWidth}
+            style={{
+              height: previewDimensionHeight,
+              width: previewDimensionWidth,
+            }}
           />
-        </Controllers>
-        <Preview>
-          <fieldset>
-            <legend>Visualizador</legend>
-            <Shape
-              heightShow={scaledHeight}
-              widthShow={scaledWidth}
-              style={{
-                height: previewDimensionHeight,
-                width: previewDimensionWidth,
-              }}
-            />
-          </fieldset>
-        </Preview>
-      </MainWrapper>
-    </>
+        </fieldset>
+      </Preview>
+    </MainWrapper>
   );
 };
 

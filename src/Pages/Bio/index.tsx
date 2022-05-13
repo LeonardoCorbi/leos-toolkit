@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Toolbar from '../../components/Toolbar';
 
 import {
   FirstContainer,
@@ -12,7 +11,6 @@ import {
 
 const Bio: React.FC = () => (
   <>
-    <Toolbar />
     <FirstContainer>
       <Animation>
         <div className="line1">
@@ -122,6 +120,9 @@ const Bio: React.FC = () => (
       </span>
       <span>
         <ul>
+          <li>
+            <Link to="/pallets">Pallets</Link>
+          </li>
           <li>
             <Link to="/dimensions">Dimensions</Link>
           </li>

@@ -1,10 +1,11 @@
 import React from 'react';
+import VSCode from './Pages/VSCode';
 import Routes from './Routes';
 import { GlobalStyles } from './Styles/globalStyles';
 
 const App = () => (
   <>
-    <Routes />
+    <VSCode />
     <GlobalStyles />
   </>
 );

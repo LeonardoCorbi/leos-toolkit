@@ -5,8 +5,6 @@ export const FirstContainer = styled.article`
 
   height: calc(100vh - 90px);
 
-  background: var(--bgGray1);
-
   font-family: Source Code Pro;
 
   display: flex;
@@ -58,8 +56,6 @@ export const FirstContainer = styled.article`
       left: -24px;
 
       font-family: JetBrains;
-      color: var(--bgGray1);
-      font-weight: 600;
       white-space: nowrap;
 
       width: fit-content;
@@ -189,8 +185,6 @@ export const SecondContainer = styled.article`
 
   height: 100vh;
 
-  background: var(--bgGray2);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -224,8 +218,6 @@ export const SecondContainer = styled.article`
 
       width: 500px;
       min-height: 150px;
-
-      background: var(--bgGray1);
 
       border-radius: 4px;
 
@@ -325,8 +317,6 @@ export const ThirdContainer = styled.article`
   padding: 80px 96px;
 
   height: 100vh;
-
-  background: var(--bgGray1);
 
   display: flex;
   flex-direction: column;
@@ -429,6 +419,4 @@ export const ForthContainer = styled.article`
   padding: 0 96px;
 
   height: 100vh;
-
-  background: var(--bgGray2);
 `;

@@ -11,7 +11,6 @@ import {
   TitleSettings,
   ContentSettings,
 } from './styles';
-import Toolbar from '../../components/Toolbar';
 
 const FontTest: React.FC = () => {
   const [title, setTitle] = useState({
@@ -34,7 +33,6 @@ const FontTest: React.FC = () => {
 
   return (
     <>
-      <Toolbar />
       <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
