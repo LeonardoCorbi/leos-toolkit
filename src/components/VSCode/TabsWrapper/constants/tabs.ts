@@ -2,11 +2,11 @@ export const tabs = [
   {
     fileTitle: 'index.tsx',
     folderTitle: 'Home',
-    url: '/pallet',
+    url: '/',
   },
   {
-    fileTitle: 'index.html',
-    folderTitle: 'public',
-    url: '/pixel-perfect',
+    fileTitle: 'pallets.tsx',
+    folderTitle: 'Projects',
+    url: '/Projects/pallets.tsx',
   },
 ];

@@ -13,11 +13,7 @@ const TabsWrapper = () => (
         const { selected, onFileClick } = useMenu();
 
         const isSelected = useCallback(() => {
-          if (
-            (folderTitle === selected.folderTitle
-            && fileTitle === selected.fileTitle)
-            || window.location.href.includes(folderTitle.toLowerCase())
-          ) {
+          if (folderTitle === selected.folderTitle && fileTitle === selected.fileTitle) {
             return 'selected';
           }
           return '';

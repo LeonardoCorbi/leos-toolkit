@@ -11,12 +11,15 @@ import Pallets from '../Pages/Shades';
 const Routes: React.FC = () => (
   <Router>
     <Route path="/" element={<Bio />} />
-    <Route path="/dimensions" element={<Dimensions />} />
-    <Route path="/REM" element={<FontREM />} />
-    <Route path="/pixelPerfect" element={<GoldenEight />} />
-    <Route path="/fontTest" element={<FontTest />} />
+    <Route path="Projects">
+      <Route path="dimensions.tsx" element={<Dimensions />} />
+      <Route path="rem.tsx" element={<FontREM />} />
+      <Route path="pixel-perfect.tsx" element={<GoldenEight />} />
+      <Route path="font-test.tsx" element={<FontTest />} />
+      <Route path="pallets.tsx" element={<Pallets />} />
+    </Route>
     <Route path="/sandbox" element={<FigmaCursor />} />
-    <Route path="/pallets" element={<Pallets />} />
+    <Route path="*" element={<Bio />} />
   </Router>
 );
 

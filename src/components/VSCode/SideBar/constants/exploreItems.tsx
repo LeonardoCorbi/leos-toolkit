@@ -20,23 +20,23 @@ export const exploreItems: IData = {
       files: [
         {
           title: 'pallets.tsx',
-          url: '/pallets',
+          url: '/Projects/pallets.tsx',
         },
         {
           title: 'dimensions.tsx',
-          url: '/dimensions',
+          url: '/Projects/dimensions.tsx',
         },
         {
           title: 'rem.tsx',
-          url: '/REM',
+          url: '/Projects/rem.tsx',
         },
         {
           title: 'pixel-perfect.tsx',
-          url: '/pixelPerfect',
+          url: '/Projects/pixel-perfect.tsx',
         },
         {
           title: 'font-test.tsx',
-          url: '/fontTest',
+          url: '/Projects/font-test.tsx',
         },
       ],
     },

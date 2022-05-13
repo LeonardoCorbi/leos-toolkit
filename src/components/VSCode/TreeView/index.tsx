@@ -62,11 +62,7 @@ const Folder = ({
             onFileClick({ fileTitle, folderTitle });
           };
           const isSelected = useCallback(() => {
-            if (
-              (folderTitle === selected.folderTitle
-                && fileTitle === selected.fileTitle)
-                || window.location.href.includes(folderTitle.toLowerCase())
-            ) {
+            if (folderTitle === selected.folderTitle && fileTitle === selected.fileTitle) {
               return 'selected';
             }
             return '';
