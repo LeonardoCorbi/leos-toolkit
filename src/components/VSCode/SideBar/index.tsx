@@ -6,7 +6,9 @@ import { Container } from './styles';
 const SideBar = () => (
   <Container>
     <h1>Leonardo Corbi</h1>
-    <TreeView data={exploreItems} />
+    {exploreItems.map((item) => (
+      <TreeView data={item} key={item.title} />
+    ))}
   </Container>
 );
 

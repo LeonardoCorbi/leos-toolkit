@@ -13,7 +13,7 @@ import {
 } from './styles';
 
 export interface IData {
-  title: string;
+  title?: string;
   files?: FileType[];
   folders?: IData[];
 }
@@ -28,13 +28,13 @@ interface IFolder {
 }
 
 const Folder = ({
-  data, index,
-}: IFolder) => {
-  const {
+  data: {
     title: folderTitle,
-    folders,
     files,
-  } = data;
+    folders,
+  },
+  index,
+}: IFolder) => {
   const { onFileClick, selected } = useMenu();
   const { fSrc, fAlt } = getFolderIcon(folderTitle);
 

@@ -9,8 +9,7 @@ export const Container = styled.nav`
   display: flex;
   flex-direction: column;
   user-select: none;
-  padding: 10px;
-  padding-bottom: 0;
+  padding-left: 10px;
 
   width: 100%;
   height: fit-content;
@@ -21,12 +20,12 @@ export const Container = styled.nav`
   font-size: 13.5px;
 
   details > hr {
-    border-color: rgba(255 255 255 / 0);
+    border-color: #65646C00;
   }
 
   &:hover {
     details > hr {
-      border-color: rgba(255 255 255 / .4);
+      border-color: #65646CFF;
     }
   }
 `;
@@ -53,11 +52,12 @@ export const Details = styled.details<IDetails>`
     transform: rotate(90deg);
     transform-origin: 0 0;
     
-    margin-left: 6px;
     width: 100vh;
     
     position: absolute;
     z-index: 0;
+    left: 12px;
+    margin-top: 3px;
 
     transition: border-color 200ms ease-in-out;
   }
@@ -78,7 +78,7 @@ export const Details = styled.details<IDetails>`
   }
 
   &[open] > summary::before {
-    transform: rotate(90deg);
+    transform: rotate(90deg) translateY(-4px);
   }
 `;
 
