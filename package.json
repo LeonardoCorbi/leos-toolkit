@@ -1,6 +1,6 @@
 {
   "name": "leos-toolkit",
-  "version": "2.0.0",
+  "version": "2.0.0-alpha",
   "private": true,
   "dependencies": {
     "@react-spring/three": "^9.4.4",
