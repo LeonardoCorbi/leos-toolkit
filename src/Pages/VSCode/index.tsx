@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -64,10 +65,7 @@ const VSCode = () => {
   
   export default VSCode;
   `;
-  fetch('https://development.leonardocorbi.dev/src/Pages/Bio/index.tsx').then((r) => r.text())
-    .then((text) => {
-      console.log(text);
-    });
+  axios('https://development.leonardocorbi.dev/src/Pages/Bio/index.tsx').then((r) => console.log(r));
   return (
     <Container>
       <SideBarWrapper>
