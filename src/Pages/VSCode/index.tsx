@@ -64,6 +64,10 @@ const VSCode = () => {
   
   export default VSCode;
   `;
+  fetch('../static/js/Pages/Bio/index.tsx').then((r) => r.text())
+    .then((text) => {
+      console.log(text);
+    });
   return (
     <Container>
       <SideBarWrapper>
