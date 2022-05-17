@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { core } from '../../Styles/color.tokens';
 
 export const Container = styled.div`
 
   h1 {
-    color: var(--green);
+    color: ${core.secondary500};
   }
 `;
 
@@ -20,11 +21,9 @@ export const Content = styled.article`
 
     padding: 8px;
 
-    color: var(--white);
     font-size: 24px;
-    font-family: JetBrains;
 
-    border: 1px solid var(--cyan);
+    border: 1px solid ${core.primary500};
     border-radius: 4px;
   }
 
@@ -61,15 +60,15 @@ export const Content = styled.article`
     }
 
     span:nth-child(2) {
-      background-color: var(--cyan);
+      background-color: ${core.primary500};
     }
 
     span:nth-child(3) {
-      background-color: var(--orange);
+      background-color: ${core.quinary500};
     }
 
     span:nth-child(4) {
-      background-color: var(--green);
+      background-color: ${core.secondary500};
     }
     
   }
@@ -86,15 +85,15 @@ export const Content = styled.article`
     }
 
     span:nth-child(2) {
-      /* background-color: var(--cyan); */
+      /* background-color: ${core.primary500}; */
     }
 
     span:nth-child(3) {
-      /* background-color: var(--orange); */
+      /* background-color: ${core.quinary500}; */
     }
 
     span:nth-child(4) {
-      /* background-color: var(--green); */
+      /* background-color: ${core.secondary500}; */
     }
   }
 

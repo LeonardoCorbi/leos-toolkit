@@ -1,13 +1,28 @@
 import {
-  tsIcon, htmlIcon, tsxIcon, gitIcon, folder, homeFolder, srcFolder, publicFolder, pagesFolder,
+  tsIcon,
+  htmlIcon,
+  tsxIcon,
+  gitIcon,
+  folder,
+  homeFolder,
+  srcFolder,
+  publicFolder,
+  pagesFolder,
+  linkedinIcon,
+  mailIcon,
 } from '../components/VSCode/SideBar/constants/icons';
 
-export const getArchiveIcon = (title: string) => {
+export const getFileIcon = (title: string) => {
+  if (title.includes('linked')) return { src: linkedinIcon, alt: 'Linkedin' };
+  if (title.includes('email')) return { src: mailIcon, alt: 'Email' };
+
   const extension = title.split('.')[1];
+
   if (extension === 'ts') return { src: tsIcon, alt: 'Typescript' };
   if (extension === 'tsx') return { src: tsxIcon, alt: 'Typescript React' };
   if (extension === 'html') return { src: htmlIcon, alt: 'HTML' };
   if (extension === 'github') return { src: gitIcon, alt: 'Git' };
+
   return { src: '', alt: '' };
 };
 
@@ -16,5 +31,6 @@ export const getFolderIcon = (title: string) => {
   if (title === 'Pages') return { fSrc: pagesFolder, fAlt: 'Pages' };
   if (title === 'public') return { fSrc: publicFolder, fAlt: 'public' };
   if (title === 'src') return { fSrc: srcFolder, fAlt: 'src' };
+
   return { fSrc: folder, fAlt: 'Sample' };
 };

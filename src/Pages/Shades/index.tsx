@@ -1,18 +1,21 @@
 import hsl from 'hsl-to-hex';
 import React, {
-  useCallback, useState,
+  useCallback, useMemo, useState,
 } from 'react';
 import { SketchPicker } from 'react-color';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { ButtonPrimary, ButtonSecondary } from '../../components/Buttons';
 import Pallet from '../../components/Pallet';
+import { useMenu } from '../../hooks/useMenu';
 import useStorage from '../../hooks/usePersistedState';
 import { handleClickToCopy } from '../../Utils/clickToCopy';
 import { getPallet } from '../../Utils/colorGrading';
+import { toCamelCase } from '../../Utils/stringUtils';
 import { IWCAG } from '../../Utils/wcagColorChecker';
 import {
   BoxWrapper,
+  Braces,
   ButtonsWrapper,
   ColorPickerWrapper,
   Confirm,
@@ -39,6 +42,7 @@ type PalletType = [string, IWCAG[]][];
 const Pallets = () => {
   const { hash } = useLocation();
   const navigate = useNavigate();
+  const { isMenuOpened } = useMenu();
   const [storedPallets, setStoredPallet] = useStorage<IStoredPallets[]>('storedPallets', []);
   const firstColor = hash || `#${String(Math.round(Math.random() * 999999))}`;
   const [selectedColor, setSelectedColor] = useState(firstColor);
@@ -50,7 +54,7 @@ const Pallets = () => {
   const handleSelectColor = useCallback(({ hex }) => {
     setSelectedColor(hex);
     setPallet(getPallet(hex, bgColor) as PalletType);
-    navigate(`/pallets${hex}`, { replace: true });
+    navigate(`${hex}`, { replace: true });
   }, [bgColor, selectedColor, range]);
 
   const handleChangeBackground = useCallback((value: number) => {
@@ -91,7 +95,7 @@ const Pallets = () => {
   }, []);
 
   return (
-    <Container>
+    <Container isMenuOpened={isMenuOpened}>
       <PalletWrapper background={bgColor}>
         {
           pallet.map(([hex, wcag], index) => (
@@ -126,56 +130,75 @@ const Pallets = () => {
 
       </ButtonsWrapper>
       {
-        storedPallets?.map(({ id, mainColor, title }, pos) => (
-          <SavedPallets key={id}>
-            <Tools
-              onMouseEnter={() => setInTools({ isHover: true, id })}
-              onMouseLeave={() => setInTools({ isHover: false, id })}
-            >
-              <Trash
-                onClick={() => handleRemovePallet(id)}
-                className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
-                title="Excluir paleta"
-              />
-
-              <Confirm
-                onClick={() => {
-                  handleSelectColor({ hex: mainColor });
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
-                title="Visualizar paleta"
-              />
-
-              <PalletName
-                role="cell"
-                contentEditable
-                spellCheck={false}
-                id="palletName"
+        storedPallets?.map(({ id, mainColor, title }, pos) => {
+          const colors = getPallet(mainColor);
+          const handleExportJson = (palletTitle: string) => {
+            let parsed = {};
+            colors.forEach((color, index) => {
+              parsed = {
+                ...parsed,
+                [`${toCamelCase(palletTitle)}${index + 1}00`]: color,
+              };
+            });
+            handleClickToCopy(JSON.stringify(parsed));
+          };
+          return (
+            <SavedPallets key={id}>
+              <Tools
+                onMouseEnter={() => setInTools({ isHover: true, id })}
+                onMouseLeave={() => setInTools({ isHover: false, id })}
               >
-                {title || `Sem título ${pos + 1}`}
-              </PalletName>
+                <Trash
+                  onClick={() => handleRemovePallet(id)}
+                  className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
+                  title="Excluir paleta"
+                />
 
-              <Save
-                onClick={(el) => handleSaveRenamePallet(id, mainColor, el.currentTarget.parentNode.querySelector('#palletName').textContent)}
-                className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
-                title="Salvar nome da paleta"
-              />
+                <Confirm
+                  onClick={() => {
+                    handleSelectColor({ hex: mainColor });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
+                  title="Visualizar paleta"
+                />
 
-              <Share
-                onClick={() => handleSharePallet(mainColor)}
-                className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
-                title="Copiar link da paleta"
-              />
+                <PalletName
+                  role="cell"
+                  contentEditable
+                  spellCheck={false}
+                  id="palletName"
+                >
+                  {title || `Sem título ${pos + 1}`}
+                </PalletName>
 
-            </Tools>
-            <BoxWrapper>
-              {getPallet(mainColor)?.map((hex, index) => (
-                <Pallet hex={hex} index={index} />
-              ))}
-            </BoxWrapper>
-          </SavedPallets>
-        ))
+                <Save
+                  onClick={(el) => handleSaveRenamePallet(id, mainColor, el.currentTarget.parentNode.querySelector('#palletName').textContent)}
+                  className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
+                  title="Salvar nome da paleta"
+                />
+
+                <Share
+                  onClick={() => handleSharePallet(mainColor)}
+                  className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
+                  title="Copiar link da paleta"
+                />
+
+                <Braces
+                  onClick={(el) => handleExportJson(el.currentTarget.parentNode.querySelector('#palletName').textContent)}
+                  className={inTools.isHover && inTools.id === id ? 'in' : 'out'}
+                  title="Copiar JSON da paleta"
+                />
+
+              </Tools>
+              <BoxWrapper>
+                {colors?.map((hex, index) => (
+                  <Pallet hex={hex} index={index} />
+                ))}
+              </BoxWrapper>
+            </SavedPallets>
+          );
+        })
       }
     </Container>
   );

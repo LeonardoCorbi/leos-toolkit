@@ -1,7 +1,9 @@
 import {
   FaCheckCircle, FaSave, FaShareAlt, FaTrash,
 } from 'react-icons/fa';
+import { RiBracesLine } from 'react-icons/ri';
 import styled from 'styled-components';
+import { defaultViewContentWidth } from '../../Styles/globalStyles';
 
 interface IBoxColor {
   color: string;
@@ -13,14 +15,14 @@ interface IShadesWrapper {
 }
 
 export const Container = styled.div`
-  font-family: sans-serif;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   padding: 24px;
+
+  ${defaultViewContentWidth}
 `;
 
 export const PalletWrapper = styled.div<IShadesWrapper>`
@@ -198,5 +200,9 @@ export const Save = styled(FaSave)`
 `;
 
 export const Confirm = styled(FaCheckCircle)`
+  fill: black;
+`;
+
+export const Braces = styled(RiBracesLine)`
   fill: black;
 `;

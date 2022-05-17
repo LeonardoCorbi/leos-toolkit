@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { core, fontColors } from '../../Styles/color.tokens';
 
 export const Container = styled.div`
   h1 {
-    color: var(--green);
+    color: ${core.secondary500};
   }
 
   button {
@@ -23,10 +24,10 @@ export const NearEight = styled.article`
   top: 32px;
 
   input {
-    border: 1px solid var(--cyan);
+    border: 1px solid ${core.primary500};
 
     width: 80px;
-    color: var(--white);
+    color: ${fontColors.white};
 
     padding: 8px;
   }

@@ -4,6 +4,7 @@ import React, {
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { toast } from 'react-toastify';
 import { MainWrapper } from '../../Styles/globalStyles';
+import { handleClickToCopy } from '../../Utils/clickToCopy';
 
 import { Container, NearEight, Preview } from './styles';
 
@@ -17,11 +18,6 @@ const GoldenEight: React.FC = () => {
 
   const lower = useMemo(() => Math.floor(nearNumber) * 8, [nearNumber]);
   const higher = useMemo(() => Math.ceil(nearNumber) * 8, [nearNumber]);
-
-  const handleClickToCopy = (value: unknown) => {
-    navigator.clipboard.writeText(String(value));
-    toast.info('Copiado!');
-  };
 
   const generate = () => {
     for (let i = index === 1 ? 1 : 50 * (index - 1); i < index * 50; i++) {

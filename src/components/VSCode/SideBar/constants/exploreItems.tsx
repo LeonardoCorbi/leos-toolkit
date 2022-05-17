@@ -1,4 +1,5 @@
 import { IData } from '../../TreeView';
+import { externalLinkIcon } from './icons';
 
 export const exploreItems: IData[] = [
   {
@@ -6,26 +7,29 @@ export const exploreItems: IData[] = [
     files: [
       {
         title: 'index.tsx',
-        url: '/',
+        url: '/Home/index.tsx',
       },
     ],
   },
   {
     title: 'public',
+    files: [
+      {
+        title: 'linked-in.ts',
+        url: 'https://www.linkedin.com',
+        external: true,
+        auxIcon: externalLinkIcon,
+      },
+      {
+        title: 'email.ts',
+        url: 'mailto:oi@leonardocorbi.dev',
+        external: true,
+        auxIcon: externalLinkIcon,
+      },
+    ],
   },
   {
     title: 'Projects',
-    folders: [
-      {
-        title: 'Tests',
-        files: [
-          {
-            title: 'index.ts',
-            url: '/',
-          },
-        ],
-      },
-    ],
     files: [
       {
         title: 'pallets.tsx',
@@ -43,13 +47,6 @@ export const exploreItems: IData[] = [
         title: 'pixel-perfect.tsx',
         url: '/Projects/pixel-perfect.tsx',
       },
-      {
-        title: 'font-test.tsx',
-        url: '/Projects/font-test.tsx',
-      },
     ],
-  },
-  {
-    title: 'Scholarship',
   },
 ];

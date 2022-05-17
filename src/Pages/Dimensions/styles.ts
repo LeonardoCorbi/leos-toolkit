@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { core, fontColors } from '../../Styles/color.tokens';
 
 interface Props {
   heightShow: number
@@ -17,9 +18,9 @@ export const Controllers = styled.article`
     width: 120px;
     padding: 8px;
 
-    color: var(--white);
+    color: ${fontColors.white};
 
-    border: 1px solid var(--cyan);
+    border: 1px solid ${core.primary500};
     border-radius: 4px;
 
   }

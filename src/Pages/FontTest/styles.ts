@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { core } from '../../Styles/color.tokens';
 
 export const Container = styled.div`
   background: white;
@@ -47,9 +48,9 @@ const commonCss = css`
 
   padding: 8px;
 
-  background: var(--bgGray1);
+  background: ${core.gray800};
 
-  border: 1px solid var(--bgGray2);
+  border: 1px solid ${core.gray900};
   border-radius: 4px;
 
   box-shadow: 0 0 20px 0 #0009;
@@ -58,29 +59,21 @@ const commonCss = css`
   height: 100%;
 
   input[type="text"], input[type="number"] {
-    border: 1px solid var(--cyan);
+    border: 1px solid ${core.primary500};
     border-radius: 4px;
 
     padding: 8px;
-    background: var(--bgGray1);
-    color: var(--white);
+    background: ${core.gray800};
 
     width: 100%;
-
-    font-family: JetBrains;
   }
 
   h2 {
-    font-family: JetBrains;
-
     margin-bottom: 16px;
   }
 
   span {
-    color: var(--white);
     margin-bottom: 8px;
-
-    font-family: JetBrains;
   }
 `;
 
@@ -89,16 +82,13 @@ export const PageSettings = styled.span`
   
   .fntInput {
     height: 100px;
-    border: 1px solid var(--cyan);
+    border: 1px solid ${core.primary500};
     border-radius: 4px;
 
     padding: 8px;
-    background: var(--bgGray1);
-    color: var(--white);
+    background: ${core.gray800};
 
     width: 100%;
-
-    font-family: JetBrains;
 
     &:hover {
       resize: none;

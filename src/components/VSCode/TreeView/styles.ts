@@ -16,7 +16,6 @@ export const Container = styled.nav`
 
   overflow: hidden;
 
-  font-family: 'Roboto', sans-serif;
   font-size: 13.5px;
 
   details > hr {
@@ -45,6 +44,8 @@ export const Summary = styled.summary`
 export const Details = styled.details<IDetails>`
   padding-left: ${({ tabLength }) => tabLength * 8}px;
   position: relative;
+
+  cursor: default;
 
   hr {
     border: 0.5px solid;
@@ -95,6 +96,7 @@ const selectionStyle = css`
 export const Content = styled.ul`
   margin-top: 2px;
   padding-left: 20px;
+  position: relative;
 
   cursor: pointer;
 
@@ -103,6 +105,7 @@ export const Content = styled.ul`
       ${selectionStyle}
     }
   }
+
 `;
 
 export const File = styled.li`
@@ -125,4 +128,16 @@ export const File = styled.li`
 
     margin: 0 4px;
   }
+
+  .icon {
+    width: 16px;
+    aspect-ratio: 1/1;
+
+    position: absolute;
+    top: 0;
+    right: 8px;
+    margin-top: 2px;
+    z-index: 100;
+    pointer-events: none;
+  } 
 `;

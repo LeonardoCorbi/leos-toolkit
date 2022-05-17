@@ -1,16 +1,15 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
+import { core, fontColors, miscColors } from './color.tokens';
+
+interface IDefaultViewContentWidth {
+  isMenuOpened: boolean;
+}
 
 export const GlobalStyles = createGlobalStyle`
 
-  //! Thin 100
-  //! Light 300
-  //! Regular 400
-  //! Medium 500
-  //! Bold 700
-
   @font-face {
     font-family: JetBrains;
-    src: url('./assets/fonts/JetBrainsMono-Regular.ttf');
+    src: url('/assets/fonts/JetBrainsMono-Regular.ttf');
   }
   
   *, h1, h2 {
@@ -18,15 +17,15 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 
-    color: white;
+    color: ${fontColors.white};
   }
   
   input {
     padding: 8px;
 
-    color: var(--white);
+    color: ${fontColors.white};
 
-    border: 1px solid var(--cyan);
+    border: 1px solid ${core.primary500};
     border-radius: 4px;
   }
 
@@ -34,8 +33,8 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 400;
 
     &::selection {
-      background-color: #00FFFFAA;
-      color: white;
+      background-color: ${miscColors.textSelection};
+      color: ${fontColors.white};
     }
   }
 
@@ -68,20 +67,16 @@ export const GlobalStyles = createGlobalStyle`
   body {
     overflow-x: hidden;
 
-    background-color: #1A1625;
-  }
+    background-color: ${core.tertiary500};
 
-  :root {
-    --white: #E1E1E6;
-    --lightGray: #B1B1B6;
-    --bgGray1: #1c1c1c;
-    --bgGray2: #0c0c0c;
+    * {
+      font-family: 'Roboto', sans-serif;
+      color: ${fontColors.white};
+    }
 
-    --pink: #FF79C6;
-    --purple: #988BC7;
-    --cyan: #75CEFA;
-    --green: #3DD780;
-    --orange: #DA9E64;
+    code, code > span, pre > span {
+      font-family: JetBrains, Source Code Pro, monospace !important;
+    }
   }
 `;
 
@@ -91,10 +86,53 @@ export const MainWrapper = styled.main`
 
   margin: 0 auto;
 
-  font-family: JetBrains;
 
   @media(max-width: 1640px){//! CUSTOM
     padding-left: 32px;
     padding-right: 32px;
+  }
+`;
+
+export const Pink = styled.code`
+  color: ${core.quaternary500};
+`;
+
+export const Purple = styled.code`
+  color: ${core.tertiary200};
+`;
+
+export const Orange = styled.code`
+  color: ${core.quinary500};
+`;
+
+export const Green = styled.code`
+  color: ${core.secondary500};
+`;
+
+export const Cyan = styled.code`
+  color: ${core.primary500};
+`;
+
+export const defaultViewContentWidth = css<IDefaultViewContentWidth>`
+  width: ${({ isMenuOpened }) => (isMenuOpened ? '100vw' : 'calc(100vw - 200px)')};
+`;
+
+export const bioAnimation = css`
+  @keyframes Typing{
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes Blinking{
+    from {
+      border-color: ${fontColors.white};
+    }
+    to {
+      border-color: transparent;
+    }
   }
 `;

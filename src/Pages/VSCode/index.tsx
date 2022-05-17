@@ -1,8 +1,10 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import SideBar from '../../components/VSCode/SideBar';
 import TabsWrapper from '../../components/VSCode/TabsWrapper';
-import { MenuProvider } from '../../context/MenuContext';
+import { useMenu } from '../../hooks/useMenu';
 import Routes from '../../Routes';
 import {
   Container,
@@ -11,21 +13,85 @@ import {
   View,
 } from './style';
 
-const VSCode = () => (
-  <MenuProvider>
+const VSCode = () => {
+  const { isMenuOpened, isCodeView } = useMenu();
+  const code = `import React from 'react';
+  import { Outlet } from 'react-router-dom';
+  import SyntaxHighlighter from 'react-syntax-highlighter';
+  import { dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+  import SideBar from '../../components/VSCode/SideBar';
+  import TabsWrapper from '../../components/VSCode/TabsWrapper';
+  import { useMenu } from '../../hooks/useMenu';
+  import Routes from '../../Routes';
+  import {
+    Container,
+    SideBarWrapper,
+    Content,
+    View,
+  } from './style';
+  
+  const VSCode = () => {
+    const { isMenuOpened, isCodeView } = useMenu();
+    return (
+      <Container>
+        <SideBarWrapper>
+          <SideBar />
+        </SideBarWrapper>
+        <Content>
+          <TabsWrapper />
+          <View isMenuOpened={isMenuOpened}>
+            {
+              isCodeView
+                ? (
+                  <SyntaxHighlighter
+                    language="typescript"
+                    showLineNumbers
+                    customStyle
+                    style={dracula}
+  
+                  >
+                    {code}
+                  </SyntaxHighlighter>
+                )
+                : <Routes />
+            }
+            <Outlet />
+          </View>
+        </Content>
+      </Container>
+    );
+  };
+  
+  export default VSCode;
+  `;
+  return (
     <Container>
       <SideBarWrapper>
         <SideBar />
       </SideBarWrapper>
       <Content>
         <TabsWrapper />
-        <View>
-          <Routes />
+        <View isMenuOpened={isMenuOpened}>
+          {
+            isCodeView
+              ? (
+                <SyntaxHighlighter
+                  language="typescript"
+                  showLineNumbers
+                  customStyle={{ background: '#191725', fontSize: 18 }}
+                  style={tomorrowNight}
+
+                >
+                  {code}
+                </SyntaxHighlighter>
+              )
+              : <Routes />
+          }
           <Outlet />
         </View>
       </Content>
     </Container>
-  </MenuProvider>
-);
+  );
+};
 
 export default VSCode;

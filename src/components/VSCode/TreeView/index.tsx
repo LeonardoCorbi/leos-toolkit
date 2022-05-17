@@ -3,7 +3,7 @@
 import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useMenu } from '../../../hooks/useMenu';
-import { getArchiveIcon, getFolderIcon } from '../../../Utils/getIcon';
+import { getFileIcon, getFolderIcon } from '../../../Utils/getIcon';
 import {
   Container,
   Content,
@@ -20,6 +20,8 @@ export interface IData {
 
 type FileType = Omit<IData, 'files' | 'folders'> & {
   url?: string;
+  external?: boolean
+  auxIcon?: string;
 }
 
 interface IFolder {
@@ -56,8 +58,13 @@ const Folder = ({
       ))}
 
       <Content>
-        {files?.map(({ title: fileTitle, url = '/' }) => {
-          const { src, alt } = getArchiveIcon(fileTitle);
+        {files?.map(({
+          title: fileTitle,
+          url = '/',
+          external,
+          auxIcon,
+        }) => {
+          const { src, alt } = getFileIcon(fileTitle);
           const handleClick = () => {
             onFileClick({ fileTitle, folderTitle });
           };
@@ -68,14 +75,25 @@ const Folder = ({
             return '';
           }, [selected]);
           return (
-            <Link to={url}>
-
-              <File key={fileTitle} className={isSelected()} onClick={handleClick}>
-                <img src={src} alt={`${alt} icon`} />
-                {fileTitle}
-              </File>
-            </Link>
-
+            <span>
+              {external ? (
+                <a href={url} key={`${folderTitle}/${fileTitle}`} target="_blank" rel="noreferrer">
+                  <File key={fileTitle} className={isSelected()} onClick={handleClick}>
+                    <img src={src} alt={`${alt} icon`} />
+                    {fileTitle}
+                    {auxIcon && <img className="icon" src={auxIcon} alt={`${alt} icon`} />}
+                  </File>
+                </a>
+              ) : (
+                <Link to={url} key={`${folderTitle}/${fileTitle}`}>
+                  <File key={fileTitle} className={isSelected()} onClick={handleClick}>
+                    <img src={src} alt={`${alt} icon`} />
+                    {fileTitle}
+                    {auxIcon && <img className="icon" src={auxIcon} alt={`${alt} icon`} />}
+                  </File>
+                </Link>
+              )}
+            </span>
           );
         })}
       </Content>

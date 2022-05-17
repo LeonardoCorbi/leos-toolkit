@@ -1,3 +1,3 @@
-export const handleClickToCopy = (hex: string): void => {
-  navigator.clipboard.writeText(hex);
+export const handleClickToCopy = (target: string | number): void => {
+  navigator.clipboard.writeText(String(target));
 };
