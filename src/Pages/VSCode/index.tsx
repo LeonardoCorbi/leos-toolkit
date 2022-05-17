@@ -65,7 +65,7 @@ const VSCode = () => {
   
   export default VSCode;
   `;
-  axios('https://development.leonardocorbi.dev/src/Pages/Bio/index.tsx').then((r) => console.log(r));
+  axios('../static/js/Pages/Bio/index.tsx').then((r) => console.log(r));
   return (
     <Container>
       <SideBarWrapper>
