@@ -8,46 +8,15 @@ interface IFirstContainer {
 export const FirstContainer = styled.article<IFirstContainer>`
   width: 100vw;
   height: 100%;
+  padding: 0 16px;
 
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   flex-wrap: wrap;
-
-  position: relative;
 
   transition: width 300ms ease-in-out;
 
   @media(min-width: 750px){
     ${defaultViewContentWidth};
-  }
-
-  @media(max-width: 500px){
-    flex-direction: column;
-    justify-content: center;
-    gap: 64px;
-  }
-
-  article {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 24px;
-  }
-
-  h2 {
-    position: absolute;
-    top: 50px;
-    font-size: 50px;
-  }
-
-  img {
-    border-radius: 50%;
-    width: 30%;
-
-    @media(max-width: 500px){
-      width: 60%;
-    }
   }
 `;
 
@@ -104,7 +73,7 @@ export const Animation = styled.code`
   .line6 {
     animation:
       Typing 1500ms 7800ms steps(30) forwards,
-      Blinking 750ms 7800ms linear infinite;
+      Blinking 750ms 7800ms linear;
   }
 `;
 

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useMenu } from '../../hooks/useMenu';
 import {
   Cyan,
@@ -21,10 +21,6 @@ const Bio: React.FC = () => {
   return (
     <>
       <FirstContainer isMenuOpened={isMenuOpened}>
-        <img
-          src="../assets/images/LeonardoCorbiNew.jpeg"
-          alt="Imagem de Leonardo Corbi"
-        />
         <Animation contentEditable spellCheck={false}>
           <code className="line1">
             <Pink>const</Pink> leonardoCorbi<Pink>:</Pink> <Purple>Array</Purple>{'<'}<Orange>any</Orange>{'>'}<Pink> = []</Pink>;

@@ -2,7 +2,9 @@ import React from 'react';
 import { useMenu } from '../../../hooks/useMenu';
 import TreeView from '../TreeView';
 import { exploreItems } from './constants/exploreItems';
-import { Container, Close, ActionButtons } from './styles';
+import {
+  Container, Close, ActionButtons, Code, Layout,
+} from './styles';
 
 const SideBar = () => {
   const {
@@ -10,6 +12,7 @@ const SideBar = () => {
     toggleMenu,
     isMobile,
     toggleIsCodeView,
+    isCodeView,
   } = useMenu();
 
   return (
@@ -21,8 +24,19 @@ const SideBar = () => {
       {exploreItems.map((item) => (
         <TreeView data={item} key={item.title} />
       ))}
-      <ActionButtons>
-        <button type="button" onClick={toggleIsCodeView}>View code</button>
+      <ActionButtons onClick={toggleIsCodeView}>
+        {isCodeView ? (
+          <>
+            <Layout />
+            <p>Visualizar layout</p>
+          </>
+        ) : (
+          <>
+            <Code />
+            <p>Visualizar código</p>
+          </>
+        )}
+
       </ActionButtons>
     </Container>
   );

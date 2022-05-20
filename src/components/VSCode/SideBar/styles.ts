@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { IoMdCloseCircle } from 'react-icons/io';
+import { RiCodeSSlashLine, RiLayout5Line } from 'react-icons/ri';
+import { core } from '../../../Styles/color.tokens';
 
 interface ISidebar {
   isMenuOpened: boolean;
@@ -58,6 +60,21 @@ export const ActionButtons = styled.article`
   bottom: 0;
   width: 100%;
   height: 35px;
-  background-color: red;
+
+  background-color: ${core.tertiary400};
+
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+`;
+
+export const Code = styled(RiCodeSSlashLine)`
+  font-size: 24px;
+`;
+
+export const Layout = styled(RiLayout5Line)`
+  font-size: 24px;
 `;

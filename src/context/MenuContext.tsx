@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import useStorage from '../hooks/usePersistedState';
 
-interface ISelected {
+export interface ISelected {
   folderTitle: string;
   fileTitle: string;
 }
