@@ -8,10 +8,11 @@ import FontTest from '../Pages/FontTest';
 import GoldenEight from '../Pages/GoldenEight';
 import NotFound from '../Pages/NotFound';
 import Pallets from '../Pages/Shades';
+import Hello from '../Pages/Ola';
 
 const Routes: React.FC = () => (
   <Router>
-    <Route path="/" element={<p>Olá</p>} />
+    <Route path="/" element={<Hello />} />
     <Route path="Home">
       <Route path="index.tsx" element={<Bio />} />
     </Route>
