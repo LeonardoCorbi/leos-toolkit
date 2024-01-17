@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Route, Routes as Router, Navigate,
-} from 'react-router-dom';
+import { Route, Routes as Router, Navigate } from 'react-router-dom';
 import Bio from '../Pages/Bio';
 import Dimensions from '../Pages/Dimensions';
 import FigmaCursor from '../Pages/FigmaCursor';
@@ -13,7 +11,7 @@ import Pallets from '../Pages/Shades';
 
 const Routes: React.FC = () => (
   <Router>
-    <Route path="/" element={<Navigate to="/Home/index.tsx" />} />
+    <Route path="/" element={<p>Olá</p>} />
     <Route path="Home">
       <Route path="index.tsx" element={<Bio />} />
     </Route>
